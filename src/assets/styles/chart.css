@@ -1,0 +1,34 @@
+
+
+.chart {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.chart-bar-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5rem 1rem 0.5rem 0;
+
+}
+.chart-bar {
+    position: relative;
+}
+
+.chart-bar-title {
+    margin: 0;
+    padding: 0;
+}
+
+.inner{
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+.inner:hover{
+    cursor: pointer;
+
+}
