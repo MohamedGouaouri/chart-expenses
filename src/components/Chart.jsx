@@ -1,9 +1,22 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import '../assets/styles/chart.css'
 import {data} from '../services/data/data'
+import {SocketContext} from "../services/context/context";
 const Chart = () => {
-    const ref = useRef(null)
 
+    const socket = useContext(SocketContext)
+    const [amounts, setAmounts] = useState(data)
+    useEffect(() => {
+        const onFetchAmounts = (newData) => {
+            setAmounts(newData)
+        }
+        socket.on("fetch_amounts", onFetchAmounts)
+
+        return () => {
+            socket.off("fetch_amounts")
+        }
+
+    }, [socket])
 
     let itemsLength = 10
     const height = 100
@@ -11,7 +24,7 @@ const Chart = () => {
     return <div className={"chart"}>
 
         {
-            data.map((e) => {
+            amounts.map((e) => {
                 return <Bar
                     height={height}
                     amount={e.amount}

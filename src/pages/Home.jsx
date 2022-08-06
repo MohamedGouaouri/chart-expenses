@@ -1,8 +1,24 @@
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import '../assets/styles/home.css'
 import Chart from "../components/Chart";
+import {SocketContext} from "../services/context/context";
 
 const Home = () => {
+    const [balance, setBalance] = useState(null)
+    const socket = useContext(SocketContext)
+
+    useEffect(() => {
+        const onFetchBalance = (newBalance) => {
+            setBalance(newBalance)
+        }
+
+        socket.on("fetch_balance", onFetchBalance)
+
+        return () => {
+            socket.off("fetch_balance")
+        }
+
+    }, [socket])
     return <div className={"home"}>
         <div className={"content-wrapper"}>
 
@@ -11,7 +27,7 @@ const Home = () => {
                     My balance
                 </span>
                 <h2 className={"balance"}>
-                    $951.25
+                    ${balance}
                 </h2>
             </div>
 
@@ -20,12 +36,9 @@ const Home = () => {
                     Spending - Last 7 days
                 </h2>
 
-                {/* TODO: Chart here   */}
-
                 <Chart />
 
                 {/*<Divider />*/}
-
 
             </div>
 

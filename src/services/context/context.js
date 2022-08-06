@@ -1,15 +1,17 @@
-import React, {useState, useContext} from "react";
+import React from "react";
+import io from 'socket.io-client';
+import {WS_URL} from "../../config/config";
 
-const AppContext = React.createContext()
 
-const AppProvider = ({children}) => {
-
-    return <AppContext.Provider>
+const SocketContext = React.createContext()
+const SocketProvider = ({children}) => {
+    const socket = io(WS_URL)
+    return <SocketContext.Provider value={socket}>
         {children}
-    </AppContext.Provider>
+    </SocketContext.Provider>
 }
 
 export {
-    AppContext,
-    AppProvider
+    SocketContext,
+    SocketProvider
 }
