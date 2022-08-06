@@ -23,7 +23,7 @@
     padding: 1rem 1rem 0;
 }
 .title {
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 
@@ -43,7 +43,14 @@
     height: 2px;
     width: 100%;
     background-color: var(--clr-cream);
+    margin: 2rem 0;
 }
 
-.chart {
+.footer{
+    display: flex;
+}
+.footer .balance {
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin: 0.5rem 0;
 }

@@ -1,3 +1,3 @@
 
 
-export const WS_URL = "https://b972-154-247-22-85.ngrok.io"
+export const WS_URL = "http://127.0.0.1:3000/"

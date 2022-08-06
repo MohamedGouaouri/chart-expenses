@@ -4,18 +4,25 @@ import Chart from "../components/Chart";
 import {SocketContext} from "../services/context/context";
 
 const Home = () => {
-    const [balance, setBalance] = useState(null)
+    const [balance, setBalance] = useState(0)
+    const [totalBalance, setTotalBalance] = useState(0)
     const socket = useContext(SocketContext)
 
     useEffect(() => {
         const onFetchBalance = (newBalance) => {
             setBalance(newBalance)
         }
+        const onFetchTotal = (total) => {
+            setTotalBalance(total)
+        }
 
         socket.on("fetch_balance", onFetchBalance)
 
+        socket.on("fetch_total", onFetchTotal)
+
         return () => {
             socket.off("fetch_balance")
+            socket.off("fetch_total")
         }
 
     }, [socket])
@@ -38,8 +45,18 @@ const Home = () => {
 
                 <Chart />
 
-                {/*<Divider />*/}
+                <Divider />
+                <div className={"footer"}>
+                    <div className={"left"}>
+                        <span className={"title"}>
+                            Total this month
+                        </span>
+                        <h2 className={"balance"}>
+                            ${totalBalance}
+                        </h2>
+                    </div>
 
+                </div>
             </div>
 
         </div>
