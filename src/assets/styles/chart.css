@@ -21,6 +21,7 @@
 .chart-bar-title {
     margin: 0;
     padding: 0;
+    color: var(--clr-medium-brown);
 }
 
 .inner{
@@ -30,6 +31,7 @@
     transition: height 500ms;
     display: flex;
     justify-content: center;
+
 }
 .inner:hover{
     cursor: pointer;
@@ -37,10 +39,10 @@
 
 
 .tool-tip {
-    padding: 0.5rem 0.5rem;
+    padding: 0.5rem 0.7rem;
     width: 100%;
     text-align: center;
-    background-color: var(--clr-black);
+    background-color: var(--clr-dark-brown);
     color: var(--clr-white);
     border-radius: 10px;
     position: absolute;

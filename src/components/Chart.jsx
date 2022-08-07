@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import '../assets/styles/chart.css'
 import {data} from '../services/data/data'
 import {SocketContext} from "../services/context/context";
@@ -41,7 +41,7 @@ const Chart = () => {
 
 
 const Bar = ({name, height, amount, width, itemsLength}) => {
-    const [color, _] = useState("var(--clr-primary-red-soft)")
+    const [color, setColor] = useState("var(--clr-primary-red-soft)")
     const [tooltipVisibility, setTooltipVisibility] = useState(false)
 
 
@@ -63,11 +63,14 @@ const Bar = ({name, height, amount, width, itemsLength}) => {
                      onMouseEnter={
                          () => {
                              setTooltipVisibility(true)
+                             setColor("var(--clr-primary-cyan)")
                          }
                      }
                      onMouseLeave={
                          () => {
                              setTooltipVisibility(false)
+                             setColor("var(--clr-primary-red-soft)")
+
                          }
                      }
                 >

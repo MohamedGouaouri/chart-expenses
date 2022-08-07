@@ -4,8 +4,8 @@ import Chart from "../components/Chart";
 import {SocketContext} from "../services/context/context";
 
 const Home = () => {
-    const [balance, setBalance] = useState(0)
-    const [totalBalance, setTotalBalance] = useState(0)
+    const [balance, setBalance] = useState(921.48)
+    const [totalBalance, setTotalBalance] = useState(478.48)
     const socket = useContext(SocketContext)
 
     useEffect(() => {
@@ -54,6 +54,15 @@ const Home = () => {
                         <h2 className={"balance"}>
                             ${totalBalance}
                         </h2>
+                    </div>
+
+                    <div className={"right"}>
+                        <div className={"diff"}>
+                            +2.4%
+                        </div>
+                        <div className={""}>
+                            from last month
+                        </div>
                     </div>
 
                 </div>
